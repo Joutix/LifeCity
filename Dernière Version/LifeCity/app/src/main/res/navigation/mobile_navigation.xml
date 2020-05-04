@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.lifecity.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_news"
+        android:name="com.example.lifecity.ui.news.NewsFragment"
+        android:label="@string/menu_news"
+        tools:layout="@layout/fragment_news" />
+
+    <fragment
+        android:id="@+id/nav_commerces"
+        android:name="com.example.lifecity.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_commerces"
+        tools:layout="@layout/fragment_commerces" />
+
+    <fragment
+        android:id="@+id/nav_reseaux"
+        android:name="com.example.lifecity.ui.tools.ToolsFragment"
+        android:label="@string/menu_reseaux"
+        tools:layout="@layout/fragment_reseaux" />
+
+    <fragment
+        android:id="@+id/nav_pub"
+        android:name="com.example.lifecity.ui.share.ShareFragment"
+        android:label="@string/menu_pub"
+        tools:layout="@layout/fragment_pub" />
+
+    <fragment
+        android:id="@+id/nav_parametre"
+        android:name="com.example.lifecity.ui.send.SendFragment"
+        android:label="@string/menu_param"
+        tools:layout="@layout/fragment_param" />
+</navigation>

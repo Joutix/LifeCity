@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "356595990218",
+    "firebase_url": "https://lifecity-d2242.firebaseio.com",
+    "project_id": "lifecity-d2242",
+    "storage_bucket": "lifecity-d2242.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:356595990218:android:2f8729e8edfc58a8edfe33",
+        "android_client_info": {
+          "package_name": "com.example.lifecity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "356595990218-tu8tp13eeolv3dpac537j2ijo6qmsams.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lifecity",
+            "certificate_hash": "81e7857cb1c70179bace223c3ac54be51a79ce36"
+          }
+        },
+        {
+          "client_id": "356595990218-iabh3fhrgf8a6ul8o1uika2rt8nd50r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDefU8OPNBVvJK2Vyz9Ix-RZsETHkfW7WM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "356595990218-iabh3fhrgf8a6ul8o1uika2rt8nd50r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
