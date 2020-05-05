@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.lifecity.ui.news.NewsActivity;
 import com.example.lifecity.MainActivity;
 import com.example.lifecity.R;
 
@@ -38,7 +39,7 @@ public class AccueilActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(i);
                 break;
             case R.id.card_News :
-                i = new Intent(this, MainActivity.class);
+                i = new Intent(this, NewsActivity.class);
                 startActivity(i);
                 break;
             case R.id.card_Reseaux :
