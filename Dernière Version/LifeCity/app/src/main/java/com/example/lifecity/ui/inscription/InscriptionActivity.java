@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.lifecity.MainActivity;
 import com.example.lifecity.R;
+import com.example.lifecity.ui.home.AccueilActivity;
 import com.example.lifecity.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -74,7 +75,7 @@ public class InscriptionActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(InscriptionActivity.this, "Utilisateur Crée", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), AccueilActivity.class));
                             }
                             else{
                                 Toast.makeText(InscriptionActivity.this, "Erreur ! : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

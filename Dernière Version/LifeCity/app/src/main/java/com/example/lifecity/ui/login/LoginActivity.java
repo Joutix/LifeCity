@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.lifecity.MainActivity;
 import com.example.lifecity.R;
+import com.example.lifecity.ui.home.AccueilActivity;
 import com.example.lifecity.ui.inscription.InscriptionActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(LoginActivity.this, "Utilisateur Connecté", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                startActivity(new Intent(getApplicationContext(), AccueilActivity.class));
                             }
                             else{
                                 Toast.makeText(LoginActivity.this, "Erreur ! : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
