@@ -1,4 +1,4 @@
-package com.example.lifecity.ui.reseaux;
+package com.example.lifecity.ui.commerce.Offre;
 
 import android.os.Bundle;
 
@@ -12,16 +12,16 @@ import android.view.View;
 
 import com.example.lifecity.R;
 
-public class ReseauxActivity extends AppCompatActivity {
+public class CommercialOffreActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_reseaux);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_commercial_offre);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,5 +30,4 @@ public class ReseauxActivity extends AppCompatActivity {
             }
         });
     }
-
 }

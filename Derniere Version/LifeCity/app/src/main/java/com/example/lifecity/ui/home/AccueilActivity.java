@@ -7,12 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.lifecity.ui.commerce.CommerceActivity;
-import com.example.lifecity.ui.news.NewsActivity;
-import com.example.lifecity.MainActivity;
 import com.example.lifecity.R;
-import com.example.lifecity.ui.pub.PubActivity;
-import com.example.lifecity.ui.reseaux.ReseauxActivity;
 
 public class AccueilActivity extends AppCompatActivity implements View.OnClickListener{
     private CardView commerceCard, newsCard, reseauxCard, pubCard;
@@ -36,9 +31,9 @@ public class AccueilActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         Intent i;
-        switch(v.getId()){
+      /*  switch(v.getId()){
             case R.id.card_Commerce :
-                i = new Intent(this, CommerceActivity.class);
+                i = new Intent(this, MainCommerceActivity.class);
                 startActivity(i);
                 break;
             case R.id.card_News :
@@ -56,6 +51,6 @@ public class AccueilActivity extends AppCompatActivity implements View.OnClickLi
             default :
                 break;
 
-        }
+        }*/
     }
 }

@@ -2,18 +2,13 @@ package com.example.lifecity.ui.news;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.lifecity.R;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
-import com.example.lifecity.ui.news.ui.main.SectionsPagerAdapter;
+import com.example.lifecity.ui.news.ui.main.NewsSectionsPagerAdapter;
 
 public class MainNewsActivity extends AppCompatActivity {
 
@@ -21,7 +16,7 @@ public class MainNewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_news);
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        NewsSectionsPagerAdapter sectionsPagerAdapter = new NewsSectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         TabLayout tabs = findViewById(R.id.tabs);

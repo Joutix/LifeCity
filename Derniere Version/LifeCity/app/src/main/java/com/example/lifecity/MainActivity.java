@@ -1,12 +1,17 @@
 package com.example.lifecity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.lifecity.ui.commerce.MainCommerceActivity;
+import com.example.lifecity.ui.news.MainNewsActivity;
+import com.example.lifecity.ui.reseaux.MainReseauxActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,8 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity{
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -51,7 +55,12 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
     }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
