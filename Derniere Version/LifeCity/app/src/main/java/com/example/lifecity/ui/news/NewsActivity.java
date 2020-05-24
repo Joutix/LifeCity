@@ -55,7 +55,7 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-        scrollview = findViewById(R.id.scoll);
+      /*  scrollview = findViewById(R.id.scoll);
         linearLayout = findViewById(R.id.linear);
         textView1 = findViewById(R.id.textView3);
         textView11 = findViewById(R.id.textView4);
@@ -65,10 +65,10 @@ public class NewsActivity extends AppCompatActivity {
         textView31 = findViewById(R.id.textView8);
         imageView1 = findViewById(R.id.imageView3);
         imageView2 = findViewById(R.id.imageView4);
-        imageView3 = findViewById(R.id.imageView5);
+        imageView3 = findViewById(R.id.imageView5);*/
 
         final int[] nbArticle = {0};
-        mTextViewResult = findViewById(R.id.text_view_result);
+       // mTextViewResult = findViewById(R.id.text_view_result);
         mQueue = Volley.newRequestQueue(this);
 
         final String url = "https://newsapi.org/v2/top-headlines?country=fr&apiKey=c42d8060d2dc46c8bde71e3578dcb742";

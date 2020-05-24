@@ -1,13 +1,19 @@
 package com.example.lifecity.ui.news.ui.main;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.AdapterView.*;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,10 +26,12 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.lifecity.R;
 import com.squareup.picasso.Picasso;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -79,58 +87,59 @@ public class NewsPlaceholderFragment extends Fragment {
 
             case 2://Actu
 
-                scrollview = root.findViewById(R.id.scoll);
-                linearLayout = root.findViewById(R.id.linear);
-                textView1 = root.findViewById(R.id.textView3);
-                textView11 = root.findViewById(R.id.textView4);
-                textView2 = root.findViewById(R.id.textView5);
-                textView21 = root.findViewById(R.id.textView6);
-                textView3 = root.findViewById(R.id.textView7);
-                textView31 = root.findViewById(R.id.textView8);
-                imageView1 = root.findViewById(R.id.imageView3);
-                imageView2 = root.findViewById(R.id.imageView4);
-                imageView3 = root.findViewById(R.id.imageView5);
-
                 final int[] nbArticle = {0};
-                mTextViewResult = root.findViewById(R.id.text_view_result);
+               // mTextViewResult = root.findViewById(R.id.text_view_result);
                 mQueue = Volley.newRequestQueue(getActivity());
 
                 final String url = "https://newsapi.org/v2/top-headlines?country=fr&apiKey=c42d8060d2dc46c8bde71e3578dcb742";
 
-                final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
+                            final List<Article> articleList=new ArrayList<>();
+                            ListView listView=(ListView)getActivity().findViewById(R.id.lvArticle);
+                            ArticleAdapter adapter=new ArticleAdapter(getContext(),(ArrayList<Article>)articleList);
+                            listView.setAdapter(adapter);
+
+
+
+
                             JSONArray jsonArray = response.getJSONArray("articles");
                             nbArticle[0] = jsonArray.length();
-                            for(int i=0; i<3; i++){
+
+                            for(int i=0; i<10; i++){
                                 JSONObject article = jsonArray.getJSONObject(i);
                                 JSONObject site = article.getJSONObject("source");
+
+                                String titreArticle = article.getString("title");
+                                String descArticle = article.getString("description");
+
                                 String nomSite = site.getString("name");
                                 String urlImage = article.getString("urlToImage");
                                 String urlArticle = article.getString("url");
-                                if(i==1){
-                                    textView1.setText(nomSite);
-                                    textView11.setText(urlArticle);
-                                    Picasso.with(getActivity()).load(urlArticle).into(imageView1);
-                                }
-                                else if(i==2){
-                                    textView2.setText(nomSite);
-                                    textView21.setText(urlArticle);
-                                    Picasso.with(getActivity()).load(urlArticle).into(imageView2);
-                                }
-                                else{
-                                    textView3.setText(nomSite);
-                                    textView31.setText(urlArticle);
-                                    Picasso.with(getActivity()).load(urlArticle).into(imageView3);
-                                }
 
+
+                                Article art=new Article(titreArticle,descArticle,nomSite,urlImage,urlArticle);
+                                articleList.add(art);
 
 
                             }
+                            listView.setOnItemClickListener(new OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                                    Intent i = new Intent(Intent.ACTION_VIEW);
+                                    i.setData(Uri.parse(articleList.get(position).getUrlArticle()));
+                                    startActivity(i);
+                                }
+                            });
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
@@ -138,9 +147,9 @@ public class NewsPlaceholderFragment extends Fragment {
                         error.printStackTrace();
                     }
                 });
+
+
                 mQueue.add(request);
-
-
                 break;
 
 
