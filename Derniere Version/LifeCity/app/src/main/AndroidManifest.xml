@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.news.ui.main.Alarm"></activity>
+        <activity
+            android:name=".ui.settings.SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".ui.news.ui.main.Alarm" />
         <activity
             android:name=".ui.reseaux.MainReseauxActivity"
             android:label="@string/title_activity_main_reseaux"

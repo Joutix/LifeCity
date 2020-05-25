@@ -125,4 +125,5 @@
     <string name="title_activity_main_reseaux">MainReseauxActivity</string>
     <string name="tab_reseaux_1">Groupes</string>
     <string name="tab_reseaux_2">Créer</string>
+    <string name="title_activity_setting">SettingActivity</string>
 </resources>

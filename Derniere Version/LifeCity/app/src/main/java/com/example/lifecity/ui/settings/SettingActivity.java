@@ -1,4 +1,4 @@
-package com.example.lifecity.ui.commerce.List;
+package com.example.lifecity.ui.settings;
 
 import android.os.Bundle;
 
@@ -7,27 +7,21 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
 
 import com.example.lifecity.R;
 
-public class CommerceListActivity extends AppCompatActivity {
-
-    private RecyclerView mFirestoreList;
+public class SettingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_commerce_list);
-
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_setting);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,8 +29,6 @@ public class CommerceListActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        mFirestoreList = findViewById(R.id.firetore_list);
-
     }
+
 }
