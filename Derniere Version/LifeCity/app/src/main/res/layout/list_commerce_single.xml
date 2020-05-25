@@ -13,15 +13,15 @@
         android:layout_marginEnd="336dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageCommerce"
+        app:layout_constraintTop_toBottomOf="@id/textVille"
         tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageCommerce"
         android:layout_width="415dp"
         android:layout_height="170dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/commerce_icon"
         tools:ignore="MissingConstraints" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="352dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageCommerce"
         tools:ignore="MissingConstraints" />
 
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="336dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textNom"
         tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

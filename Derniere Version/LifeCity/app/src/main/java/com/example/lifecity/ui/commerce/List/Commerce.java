@@ -8,14 +8,16 @@ public class Commerce implements Serializable {
     private String ville;
     private String adresse;
     private String interet;
+    private String image;
 
     private Commerce(){}
 
-    private Commerce(String n, String v, String a, String i){
+    private Commerce(String n, String v, String a, String i, String im){
         nom = n;
         ville = v;
         adresse = a;
         interet = i;
+        image = i;
     }
 
     public String getNom(){
@@ -48,5 +50,13 @@ public class Commerce implements Serializable {
 
     public void setInteret(String n){
         interet = n;
+    }
+
+    public String getImage(){
+        return image;
+    }
+
+    public void setImage(String n){
+        image = n;
     }
 }
