@@ -4,52 +4,52 @@ import java.io.Serializable;
 
 public class Commerce implements Serializable {
 
-    private String nom;
-    private String ville;
-    private String adresse;
-    private String interet;
+    private String Nom;
+    private String Ville;
+    private String Adresse;
+    private String Interet;
     private String image;
 
     private Commerce(){}
 
-    private Commerce(String n, String v, String a, String i, String im){
-        nom = n;
-        ville = v;
-        adresse = a;
-        interet = i;
-        image = i;
+    private Commerce(String Nom, String Ville, String Adresse, String Interet, String image){
+        this.Nom = Nom;
+        this.Ville = Ville;
+        this.Adresse = Adresse;
+        this.Interet = Interet;
+        this.image = image;
     }
 
     public String getNom(){
-        return nom;
+        return Nom;
     }
 
     public void setNom(String n){
-        nom = n;
+        Nom = n;
     }
 
     public String getVille(){
-        return ville;
+        return Ville;
     }
 
     public void setVille(String n){
-        ville = n;
+        Ville = n;
     }
 
     public String getAdresse(){
-        return adresse;
+        return Adresse;
     }
 
     public void setAdresse(String n){
-        adresse = n;
+        Adresse = n;
     }
 
     public String getInteret(){
-        return interet;
+        return Interet;
     }
 
     public void setInteret(String n){
-        interet = n;
+        Interet = n;
     }
 
     public String getImage(){

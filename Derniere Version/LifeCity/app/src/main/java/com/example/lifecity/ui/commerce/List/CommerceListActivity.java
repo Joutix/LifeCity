@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
@@ -38,34 +39,36 @@ public class CommerceListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commerce_list);
 
-        mFirestoreList = findViewById(R.id.firestore_list);
+        mFirestoreList = (RecyclerView)findViewById(R.id.firestore_list);
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         Query query = firebaseFirestore.collection("commerce");
 
         FirestoreRecyclerOptions<Commerce> options = new FirestoreRecyclerOptions.Builder<Commerce>()
                 .setQuery(query, Commerce.class).build();
+        System.out.println("Suite1...");
 
         adapter = new FirestoreRecyclerAdapter<Commerce, ProductsViewHolder>(options) {
             @NonNull
             @Override
             public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_commerce_single, parent, false);
+                System.out.println("Nouveau commerce: ");
                 return new ProductsViewHolder(view);
             }
 
             @Override
             protected void onBindViewHolder(@NonNull ProductsViewHolder productsViewHolder, int i, @NonNull Commerce commerce) {
+
                 productsViewHolder.list_nom.setText(commerce.getNom());
                 productsViewHolder.list_adresse.setText(commerce.getAdresse());
                 productsViewHolder.list_ville.setText(commerce.getVille());
-                productsViewHolder.urlImage = commerce.getImage();
-
-
+                Glide.with(getApplicationContext()).load(commerce.getImage()).into(productsViewHolder.list_image);
+                //productsViewHolder.urlImage = commerce.getImage();
             }
         };
-
-        mFirestoreList.setHasFixedSize(true);
+        System.out.println("Suite2...");
+       // mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
     }
@@ -75,12 +78,12 @@ public class CommerceListActivity extends AppCompatActivity {
         private TextView list_nom;
         private TextView list_ville;
         private TextView list_adresse;
-        private String urlImage;
+        private ImageView list_image;
 
         public ProductsViewHolder(@NonNull View itemView){
             super(itemView);
 
-            new DownloadImageTask((ImageView) findViewById(R.id.imageCommerce)).execute(urlImage);
+            list_image = itemView.findViewById(R.id.imageCommerce);
             list_nom = itemView.findViewById(R.id.textNom);
             list_ville = itemView.findViewById(R.id.textVille);
             list_adresse = itemView.findViewById(R.id.textAdresse);
