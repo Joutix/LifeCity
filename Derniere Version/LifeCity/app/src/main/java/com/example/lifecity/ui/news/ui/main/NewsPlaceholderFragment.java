@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -176,6 +177,8 @@ public class NewsPlaceholderFragment extends Fragment {
                         AlarmManager am =( AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
                         Intent i = new Intent(getActivity().getApplicationContext(),Alarm.class);
                         PendingIntent pi = PendingIntent.getActivity(getContext(), 101, i, PendingIntent.FLAG_UPDATE_CURRENT);
+                        
+
                         Date date = new Date();   // given date
                         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
                         calendar.setTime(date);   // assigns calendar to given date
@@ -184,7 +187,7 @@ public class NewsPlaceholderFragment extends Fragment {
                         int deltaM=(tp.getMinute()-calendar.get(Calendar.MINUTE));
                         int deltaTotalInSec=3600*deltaH+60*deltaM;
 
-                        System.out.println("Alarm set on "+tp.getHour()+" "+tp.getMinute()+"sonne dans"+(tp.getHour()-calendar.get(Calendar.HOUR_OF_DAY))+"h et"+ (tp.getMinute()-calendar.get(Calendar.MINUTE)));
+                        System.out.println("Alarm set on "+tp.getHour()+" "+tp.getMinute()+"sonne dans"+deltaTotalInSec);
                         am.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() +  deltaTotalInSec * 1000,pi);
 
                     }
