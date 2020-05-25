@@ -5,14 +5,14 @@ import java.io.Serializable;
 public class Pub implements Serializable {
     private String NomPUB;
     private String Description;
-    private String UrlImage;
+    private String URLImage;
 
     private Pub(){}
 
     private Pub(String n, String v, String i){
         NomPUB = n;
         Description = v;
-        UrlImage = i;
+        URLImage = i;
     }
 
     public String getNomPUB(){
@@ -31,11 +31,11 @@ public class Pub implements Serializable {
         Description = n;
     }
 
-    public String getUrlImage(){
-        return UrlImage;
+    public String getURLImage(){
+        return URLImage;
     }
 
-    public void setUrlImage(String n){
-        UrlImage = n;
+    public void setURLImage(String n){
+        URLImage = n;
     }
 }

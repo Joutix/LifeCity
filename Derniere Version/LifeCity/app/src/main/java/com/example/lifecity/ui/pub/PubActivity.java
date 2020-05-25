@@ -47,14 +47,12 @@ public class PubActivity extends AppCompatActivity {
 
         FirestoreRecyclerOptions<Pub> options = new FirestoreRecyclerOptions.Builder<Pub>()
                 .setQuery(query, Pub.class).build();
-        System.out.println("Suite Pub...");
 
         adapter = new FirestoreRecyclerAdapter<Pub, PubActivity.ProductsViewHolder>(options) {
             @NonNull
             @Override
             public PubActivity.ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_pub_single, parent, false);
-                System.out.println("Nouveau pub: ");
                 return new PubActivity.ProductsViewHolder(view);
             }
 
@@ -63,11 +61,11 @@ public class PubActivity extends AppCompatActivity {
 
                 productsViewHolder.list_nom.setText(pub.getNomPUB());
                 productsViewHolder.list_desc.setText(pub.getDescription());
-                Glide.with(getApplicationContext()).load(pub.getUrlImage()).into(productsViewHolder.list_image);
+                System.out.println(pub.getURLImage());
+                Glide.with(getApplicationContext()).load(pub.getURLImage()).into(productsViewHolder.list_image);
                 //productsViewHolder.urlImage = commerce.getImage();
             }
         };
-        System.out.println("Suite Pub...");
         // mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);

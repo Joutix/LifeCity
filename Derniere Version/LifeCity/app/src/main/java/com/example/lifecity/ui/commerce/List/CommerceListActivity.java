@@ -46,14 +46,12 @@ public class CommerceListActivity extends AppCompatActivity {
 
         FirestoreRecyclerOptions<Commerce> options = new FirestoreRecyclerOptions.Builder<Commerce>()
                 .setQuery(query, Commerce.class).build();
-        System.out.println("Suite1...");
 
         adapter = new FirestoreRecyclerAdapter<Commerce, ProductsViewHolder>(options) {
             @NonNull
             @Override
             public ProductsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_commerce_single, parent, false);
-                System.out.println("Nouveau commerce: ");
                 return new ProductsViewHolder(view);
             }
 
@@ -67,7 +65,6 @@ public class CommerceListActivity extends AppCompatActivity {
                 //productsViewHolder.urlImage = commerce.getImage();
             }
         };
-        System.out.println("Suite2...");
        // mFirestoreList.setHasFixedSize(true);
         mFirestoreList.setLayoutManager(new LinearLayoutManager(this));
         mFirestoreList.setAdapter(adapter);
