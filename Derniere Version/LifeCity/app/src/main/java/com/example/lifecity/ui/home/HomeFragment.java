@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.lifecity.R;
+import com.example.lifecity.ui.pub.PubActivity;
 import com.example.lifecity.ui.commerce.MainCommerceActivity;
 import com.example.lifecity.ui.news.MainNewsActivity;
 import com.example.lifecity.ui.reseaux.MainReseauxActivity;
@@ -60,10 +61,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 i = new Intent(getActivity(), MainReseauxActivity.class);
                 startActivity(i);
                 break;
-            /*case R.id.card_Publicites:
-                i = new Intent(this, PubActivity.class);
+
+                case R.id.card_Publicites:
+                i = new Intent(getActivity(), PubActivity.class);
                 startActivity(i);
-                break;*/
+                break;
             default:
                 break;
 
