@@ -95,6 +95,55 @@ public class NewsPlaceholderFragment extends Fragment {
         View root = null;
         System.out.println(index);
         switch(index){
+            case 1://Meteo
+                root=inflater.inflate(R.layout.meteo_layout, container, false);
+
+                mQueue = Volley.newRequestQueue(getActivity());
+
+                final String urlMeteo = "https://api.openweathermap.org/data/2.5/weather?q=Montpellier&lang=fr&units=metric&appid=e5111a8c2c191bec87469bc63cf687fc";
+
+
+                JsonObjectRequest requestMeteo = new JsonObjectRequest(Request.Method.GET, urlMeteo, null, new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+
+                            JSONArray weather = response.getJSONArray("weather");
+                            JSONObject main = response.getJSONObject("main");
+
+
+                            TextView tvName=(TextView)(getActivity().findViewById(R.id.tvMeteoName));
+                            tvName.setText((String)response.get("name"));
+
+                            TextView tvDesc=(TextView)(getActivity().findViewById(R.id.tvMeteoDescription));
+                            tvDesc.setText((String)weather.getJSONObject(0).get("description"));
+
+                            TextView tvTemp=(TextView)(getActivity().findViewById(R.id.tvMeteoTemp));
+                            tvTemp.setText(main.get("temp").toString()+"°");
+
+
+                            System.out.println(weather.getJSONObject(0).get("description"));
+                            System.out.println(response.get("name"));
+                            System.out.println(main);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                });
+
+
+                mQueue.add(requestMeteo);
+                break;
+
+
 
             case 2://Actu
                 root=inflater.inflate(R.layout.activity_news, container, false);
@@ -177,7 +226,7 @@ public class NewsPlaceholderFragment extends Fragment {
                         AlarmManager am =( AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
                         Intent i = new Intent(getActivity().getApplicationContext(),Alarm.class);
                         PendingIntent pi = PendingIntent.getActivity(getContext(), 101, i, PendingIntent.FLAG_UPDATE_CURRENT);
-                        
+
 
                         Date date = new Date();   // given date
                         Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
