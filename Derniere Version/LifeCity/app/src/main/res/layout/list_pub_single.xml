@@ -4,29 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp">
-
-    <ImageView
-        android:id="@+id/imageCommerce2"
-        android:layout_width="415dp"
-        android:layout_height="170dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/commerce_icon"
-        android:contentDescription="@string/todo" />
-
-    <TextView
-        android:id="@+id/textNom2"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvArticle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/textview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textDesc" />
+        android:background="#FEFEFE"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/imageCommerce2"
+                android:layout_width="415dp"
+                android:layout_height="170dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/commerce_icon"
+                android:contentDescription="@string/todo" />
 
-    <TextView
-        android:id="@+id/textDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/textview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageCommerce2" />
+            <TextView
+                android:id="@+id/textNom2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageCommerce2"
+                android:textStyle="bold"
+                android:textColor="#222"
+                android:textSize="22dp"
+                android:text="@string/textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textDesc" />
+
+            <TextView
+                android:id="@+id/textDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textNom2"
+                android:textColor="#666"
+                android:textSize="14dp"
+                android:text="@string/textview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageCommerce2" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
