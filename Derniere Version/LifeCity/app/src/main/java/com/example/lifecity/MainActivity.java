@@ -1,14 +1,17 @@
 package com.example.lifecity;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.lifecity.ui.commerce.MainCommerceActivity;
 import com.example.lifecity.ui.news.MainNewsActivity;
 import com.example.lifecity.ui.reseaux.MainReseauxActivity;
+import com.example.lifecity.ui.settings.SettingActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.cardview.widget.CardView;
@@ -66,6 +69,17 @@ public class MainActivity extends AppCompatActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        MenuItem mi = menu.getItem(0);
+        mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent intent=new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+                return true;
+            }
+        });
+
         return true;
     }
 
