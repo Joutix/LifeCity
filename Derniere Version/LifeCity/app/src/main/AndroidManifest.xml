@@ -3,7 +3,7 @@
     package="com.example.lifecity">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.news.ui.main.Alarm"></activity>
         <activity
             android:name=".ui.reseaux.MainReseauxActivity"
             android:label="@string/title_activity_main_reseaux"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.commerce.Offre.CommercialOffreActivity"
             android:label="@string/title_activity_commercial_offre"

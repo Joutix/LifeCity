@@ -1,21 +1,28 @@
 package com.example.lifecity.ui.news.ui.main;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.AdapterView.*;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.android.volley.Request;
@@ -31,6 +38,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -81,14 +91,14 @@ public class NewsPlaceholderFragment extends Fragment {
     public View onCreateView(
             @NonNull LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.activity_news, container, false);
+        View root = null;
         System.out.println(index);
         switch(index){
 
             case 2://Actu
-
+                root=inflater.inflate(R.layout.activity_news, container, false);
                 final int[] nbArticle = {0};
-               // mTextViewResult = root.findViewById(R.id.text_view_result);
+
                 mQueue = Volley.newRequestQueue(getActivity());
 
                 final String url = "https://newsapi.org/v2/top-headlines?country=fr&apiKey=c42d8060d2dc46c8bde71e3578dcb742";
@@ -152,7 +162,36 @@ public class NewsPlaceholderFragment extends Fragment {
                 mQueue.add(request);
                 break;
 
+            case 4:
 
+                root=inflater.inflate(R.layout.alarm_layout, container, false);
+                Button button=(Button) root.findViewById(R.id.alarm_button);
+                System.out.println("Button ="+button);
+                if(button!=null)
+                button.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onClick(View view) {
+                        TimePicker tp=(TimePicker)getActivity().findViewById(R.id.alarm_picker);
+                        AlarmManager am =( AlarmManager)getContext().getSystemService(Context.ALARM_SERVICE);
+                        Intent i = new Intent(getActivity().getApplicationContext(),Alarm.class);
+                        PendingIntent pi = PendingIntent.getActivity(getContext(), 101, i, PendingIntent.FLAG_UPDATE_CURRENT);
+                        Date date = new Date();   // given date
+                        Calendar calendar = GregorianCalendar.getInstance(); // creates a new calendar instance
+                        calendar.setTime(date);   // assigns calendar to given date
+                        System.out.println(calendar.get(Calendar.HOUR_OF_DAY)+calendar.get(Calendar.MINUTE)); // gets hour in 24h format
+                        int deltaH=(tp.getHour()-calendar.get(Calendar.HOUR_OF_DAY));
+                        int deltaM=(tp.getMinute()-calendar.get(Calendar.MINUTE));
+                        int deltaTotalInSec=3600*deltaH+60*deltaM;
+
+                        System.out.println("Alarm set on "+tp.getHour()+" "+tp.getMinute()+"sonne dans"+(tp.getHour()-calendar.get(Calendar.HOUR_OF_DAY))+"h et"+ (tp.getMinute()-calendar.get(Calendar.MINUTE)));
+                        am.set(AlarmManager.RTC_WAKEUP,System.currentTimeMillis() +  deltaTotalInSec * 1000,pi);
+
+                    }
+                });
+
+
+                break;
             default:
                 return  null;
 
