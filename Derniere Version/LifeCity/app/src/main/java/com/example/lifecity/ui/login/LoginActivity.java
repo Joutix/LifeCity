@@ -35,6 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         mEmail = findViewById(R.id.loginMail);
         mPassword = findViewById(R.id.loginPassword);
         mCreate = findViewById(R.id.loginNoAccount);
+        mLogin = findViewById(R.id.loginValidButton);
+
+        mAuth = FirebaseAuth.getInstance();
 
         mLogin.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -61,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(LoginActivity.this, "Utilisateur Connecté", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), AccueilActivity.class));
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }
                             else{
                                 Toast.makeText(LoginActivity.this, "Erreur ! : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

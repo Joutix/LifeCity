@@ -75,7 +75,7 @@ public class InscriptionActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 Toast.makeText(InscriptionActivity.this, "Utilisateur Crée", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), AccueilActivity.class));
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }
                             else{
                                 Toast.makeText(InscriptionActivity.this, "Erreur ! : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
